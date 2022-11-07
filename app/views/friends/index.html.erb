@@ -1,0 +1,56 @@
+<!-- <p style="color: green"><%= notice %></p> -->
+
+<h1>Friends</h1>
+
+<table id="friends" class="table table-hover table-bordered table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th>First name:</th>
+      <th>Last name:</th>
+      <th>Phone:</th>
+      <th>Email:</th>
+      <th>Twitter:</th>
+      <th>user_id:</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @friends.each do |friend| %>
+        <% if friend.user == current_user %>
+          <tr id="<%= dom_id friend %>">
+            <td>
+              <%= friend.first_name %>
+            </td>
+
+            <td>
+              <%= friend.last_name %>
+            </td>
+
+            <td>
+              <%= friend.phone %>
+            </td>
+
+            <td> 
+              <%= friend.email %>
+            </td>
+
+            <td>
+              <%= friend.twitter %>
+            </td>
+            <td>
+              <%= friend.user_id %>
+            </td>
+            
+            <td>
+              <%= link_to "Show this friend", friend %>
+            </td>
+          </tr>
+        <% end%>
+    <% end %>
+  </tbody>
+</table>
+<div id="friends">
+  
+</div>
+
+<%= link_to "New friend", new_friend_path, class: 'btn btn-secondary' %>
